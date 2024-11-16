@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:37:37 by hbelhadj          #+#    #+#             */
-/*   Updated: 2024/11/16 16:55:07 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:28:30 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ public:
     bool hasPrefix() const;
     size_t getParamCount() const;
     std::string toString() const;
+    void print() const;
 };
 
 #endif

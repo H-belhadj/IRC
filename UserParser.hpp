@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:46:40 by hbelhadj          #+#    #+#             */
-/*   Updated: 2024/11/16 16:50:04 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:39:52 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ public:
     // Parse user modes (+i, +w, etc.)
     static std::pair<bool, std::string> parseUserModes(const std::string& modes);
 };
-#pragma endregion
+
+#endif

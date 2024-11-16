@@ -6,28 +6,28 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:41:09 by hbelhadj          #+#    #+#             */
-/*   Updated: 2024/11/16 16:41:20 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:54:40 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "CommandParser.hpp"
-#include "Server.hpp"
-#include "Client.hpp"
+#include "server.hpp"
+#include "client.hpp"
 #include <algorithm>
 
 CommandParser::CommandParser(Server* srv) : server(srv) {
     // Initialize command map
-    commandMap["NICK"] = &CommandParser::handleNick;
-    commandMap["USER"] = &CommandParser::handleUser;
-    commandMap["JOIN"] = &CommandParser::handleJoin;
-    commandMap["PRIVMSG"] = &CommandParser::handlePrivmsg;
-    commandMap["PART"] = &CommandParser::handlePart;
-    commandMap["QUIT"] = &CommandParser::handleQuit;
-    commandMap["PING"] = &CommandParser::handlePing;
-    commandMap["MODE"] = &CommandParser::handleMode;
-    commandMap["KICK"] = &CommandParser::handleKick;
-    commandMap["TOPIC"] = &CommandParser::handleTopic;
-    commandMap["INVITE"] = &CommandParser::handleInvite;
+    // commandMap["NICK"] = &CommandParser::handleNick;
+    // commandMap["USER"] = &CommandParser::handleUser;
+    // commandMap["JOIN"] = &CommandParser::handleJoin;
+    // commandMap["PRIVMSG"] = &CommandParser::handlePrivmsg;
+    // commandMap["PART"] = &CommandParser::handlePart;
+    // commandMap["QUIT"] = &CommandParser::handleQuit;
+    // commandMap["PING"] = &CommandParser::handlePing;
+    // commandMap["MODE"] = &CommandParser::handleMode;
+    // commandMap["KICK"] = &CommandParser::handleKick;
+    // commandMap["TOPIC"] = &CommandParser::handleTopic;
+    // commandMap["INVITE"] = &CommandParser::handleInvite;
 }
 
 void CommandParser::executeCommand(Client& client, const Message& msg) {
@@ -84,19 +84,26 @@ bool CommandParser::hasRequiredParams(const Message& msg, size_t required) {
     return (msg.getParams().size() + (msg.getTrailing().empty() ? 0 : 1)) >= required;
 }
 
-void CommandParser::handleNick(Client& client, const Message& msg) {
-    if (!hasRequiredParams(msg, 1)) {
-        // Send ERR_NONICKNAMEGIVEN
-        return;
-    }
-
-    std::string newNick = msg.getParams()[0];
-    if (!isValidNickname(newNick)) {
-        // Send ERR_ERRONEUSNICKNAME
-        return;
-    }
-
-    // Check if nickname is already in use
-    // Set new nickname
-    // Broadcast nickname change if client was already registered
+bool CommandParser::isRegistered(const Client& client) const {
+    (void)client;
+    // check if client is registered, for now returns true as a placeholder
+    return true;
 }
+
+// void CommandParser::handleNick(Client& client, const Message& msg) {
+//     (void)client;
+//     if (!hasRequiredParams(msg, 1)) {
+//         // Send ERR_NONICKNAMEGIVEN
+//         return;
+//     }
+
+//     std::string newNick = msg.getParams()[0];
+//     if (!isValidNickname(newNick)) {
+//         // Send ERR_ERRONEUSNICKNAME
+//         return;
+//     }
+
+//     // Check if nickname is already in use
+//     // Set new nickname
+//     // Broadcast nickname change if client was already registered
+// }

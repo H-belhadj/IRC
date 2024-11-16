@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:47:21 by hbelhadj          #+#    #+#             */
-/*   Updated: 2024/11/16 16:55:14 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:39:03 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,19 @@ std::vector<std::string> ChannelParser::parseChannelList(const std::string& chan
     return result;
 }
 
-std::pair<std::string, std::vector<std::string>> ChannelParser::parseChannelModes(const std::string& modestring) {
+bool ChannelParser::isValidModeChar(char c) {
+    (void)c;
+    // fill it
+    return true;   
+}
+
+std::pair<std::string, std::vector<std::string> > ChannelParser::parseChannelModes(const std::string& modestring) {
     std::string modes;
     std::vector<std::string> args;
     bool adding = true;
     
-    for (char c : modestring) {
+    for (size_t i = 0; i < modestring.size(); i++) {
+        char c = modestring[i];
         if (c == '+') {
             adding = true;
         } else if (c == '-') {

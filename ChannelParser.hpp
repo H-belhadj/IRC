@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:46:12 by hbelhadj          #+#    #+#             */
-/*   Updated: 2024/11/16 16:46:29 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:38:40 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
     static std::vector<std::string> parseChannelList(const std::string& channels);
     
     // Parse channel modes (+o, +v, etc.)
-    static std::pair<std::string, std::vector<std::string>> parseChannelModes(const std::string& modestring);
+    static std::pair<std::string, std::vector<std::string> > parseChannelModes(const std::string& modestring);
     
     // Parse ban masks
     static bool isValidBanMask(const std::string& mask);
@@ -33,5 +33,6 @@ public:
     // Check if user matches ban mask
     static bool matchBanMask(const std::string& mask, const std::string& nickname,
                             const std::string& username, const std::string& hostname);
+    static bool isValidModeChar(char c);
 };
 #endif
